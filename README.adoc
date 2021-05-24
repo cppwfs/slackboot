@@ -1,6 +1,6 @@
 ==  Introduction
 
-This is a Task application has a reads purchase orders from a JDBC database that sends out a slack message for each SKU that has been ordered more than a configured number of times.
+This is a Task application reads grammar transformation messages from a JDBC database that sends out a slack message for each message.
 
 == Build the project
 
@@ -20,33 +20,16 @@ NOTE: Make sure you are using Java 8 when building docker image.
 
 === To create and seed the purchase order table execute the DDL below.
 
-```
-CREATE TABLE purchase_orders
+```sql
+CREATE TABLE message
 (
-   user_id int(11),
-   sku bigint(11),
-   quantity int(11),
-   amount decimal(6,2),
-   mode varchar(255)
-)
-;
+   message varchar(255)
+);
 ```
 
-```
-INSERT INTO purchase_orders (user_id, sku, quantity, amount, mode) VALUES (15678, 102452676, 1, 19.99, 'debit');
-INSERT INTO purchase_orders (user_id, sku, quantity, amount, mode) VALUES (19854, 102459750, 3, 2.99, 'cash');
-INSERT INTO purchase_orders (user_id, sku, quantity, amount, mode) VALUES (21654, 102453548, 3, 9.99, 'credit');
-INSERT INTO purchase_orders (user_id, sku, quantity, amount, mode) VALUES (9876, 102454444, 1, 14.99, 'debit');
-INSERT INTO purchase_orders (user_id, sku, quantity, amount, mode) VALUES (11119, 102451546, 3, 9.99, 'cash');
-
-```
 
 === Configurations
 
 ==== Establish the URL for Slack using the following property
 
 `io.spring.slack.url=<Your slack URL>`
-
-==== Establish the quantity limit to determine what PO's require an alert.  Default is `2`.
-
-`io.spring.slack.quantityLimit=<new limit>`

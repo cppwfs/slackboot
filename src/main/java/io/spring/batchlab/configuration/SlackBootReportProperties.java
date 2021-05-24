@@ -22,8 +22,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class SlackBootReportProperties {
 	private String url;
 
-	private int quantityLimit = 2;
-
 	public String getUrl() {
 		return url;
 	}
@@ -32,11 +30,4 @@ public class SlackBootReportProperties {
 		this.url = url;
 	}
 
-	public int getQuantityLimit() {
-		return quantityLimit;
-	}
-
-	public void setQuantityLimit(int quantityLimit) {
-		this.quantityLimit = quantityLimit;
-	}
 }
