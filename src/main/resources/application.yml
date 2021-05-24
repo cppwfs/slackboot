@@ -1,0 +1,10 @@
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          task: debug
+
+spring:
+  application:
+    name: SlackBootReport
